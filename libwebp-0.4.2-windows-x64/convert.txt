@@ -1,0 +1,14 @@
+public static void main(String[] args) {
+		String str1 = "D:/workspace/demo/Test/libwebp-0.4.2-windows-x64/bin/cwebp.exe";
+		String str2 = "D:/workspace/demo/Test/unnamed.webp";
+		String str3 = "D:/workspace/demo/Test/xixi.jpg";
+		args = new String[]{str1, "-o", "-q", "100", str2, "-o", str3};
+		
+		try {
+			Runtime.getRuntime().exec(args);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
