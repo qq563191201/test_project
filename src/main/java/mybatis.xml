@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+<classPathEntry location="C:\Users\x\.m2\repository\mysql\mysql-connector-java\5.1.35/mysql-connector-java-5.1.35.jar" />
+
+<context id="MySqlTables" targetRuntime="MyBatis3">
+
+<!--配置数据库链接-->
+
+<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+connectionURL="jdbc:mysql://localhost:3306/qpplatformdb?characterEncoding=utf8" userId="root" password="">
+</jdbcConnection>
+
+<javaTypeResolver>
+<property name="forceBigDecimals" value="false" />
+</javaTypeResolver>
+       
+
+
+<!--配置实体bean-->
+
+<javaModelGenerator targetPackage="com.by.dao.qpplatformdb.task"
+targetProject="D:/test">
+<property name="enableSubPackages" value="false" />
+<property name="trimStrings" value="false" />
+</javaModelGenerator>
+
+<!--配置实体map接口（dao）-->  
+<sqlMapGenerator targetPackage="com.by.dao.map.platform.task"
+targetProject="D:/test">
+<property name="enableSubPackages" value="true" />
+</sqlMapGenerator> 
+   
+<!--配置实体bean的sql.xml-->  
+<javaClientGenerator targetPackage="com.by.dao.map.platform.task"
+type="XMLMAPPER" targetProject="D:/test">
+ <property name="enableSubPackages" value="true" />
+</javaClientGenerator>
+
+<!--配置实体-->  
+
+<table tableName="task_info" domainObjectName="TaskInfo">
+ 
+</table>
+</context>
+</generatorConfiguration> 

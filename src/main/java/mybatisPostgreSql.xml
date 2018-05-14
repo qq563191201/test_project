@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+<classPathEntry location="C:/Users/Administrator/.m2/repository/org/postgresql/postgresql/9.3-1102-jdbc41/postgresql-9.3-1102-jdbc41.jar" />
+
+<context id="MySqlTables" targetRuntime="MyBatis3">
+
+<!-- 生成的Java文件的编码 -->
+    <property name="javaFileEncoding" value="UTF-8"/>
+    <!-- 格式化java代码 -->
+    <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+    <!-- 格式化XML代码 -->
+    <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+<!--配置数据库链接-->
+
+<jdbcConnection driverClass="org.postgresql.Driver"
+connectionURL="jdbc:postgresql:postgres" userId="postgres" password="liaotian">
+</jdbcConnection>
+
+<javaTypeResolver>
+<property name="forceBigDecimals" value="false" />
+</javaTypeResolver>
+       
+
+
+<!--配置实体bean-->
+
+<javaModelGenerator targetPackage="com.console.pojo.platformmanager"
+targetProject="D:/test">
+<!--  for MyBatis3/MyBatis3Simple
+            自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
+         -->
+        <property name="constructorBased" value="false"/>
+
+        <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+        <property name="enableSubPackages" value="true"/>
+
+        <!-- for MyBatis3 / MyBatis3Simple
+            是否创建一个不可变的类，如果为true，
+            那么MBG会创建一个没有setter方法的类，取而代之的是类似constructorBased的类
+         -->
+        <property name="immutable" value="false"/>
+
+        <!-- 设置一个根对象，
+            如果设置了这个根对象，那么生成的keyClass或者recordClass会继承这个类；在Table的rootClass属性中可以覆盖该选项
+            注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：
+                1，属性名相同，类型相同，有相同的getter/setter方法；
+         -->
+        <!-- <property name="rootClass" value="com.console.pojo.platformmanager"/> -->
+
+        <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+        <property name="trimStrings" value="true"/>
+</javaModelGenerator>
+
+<!--配置实体map接口（dao）-->  
+<sqlMapGenerator targetPackage="com.console.writer.mapper.platformmanager"
+targetProject="D:/test">
+<property name="enableSubPackages" value="true" />
+</sqlMapGenerator> 
+   
+<!--配置实体bean的sql.xml-->  
+<javaClientGenerator targetPackage="com.console.writer.mapper.platformmanager"
+type="XMLMAPPER" targetProject="D:/test">
+ <property name="enableSubPackages" value="true" />
+</javaClientGenerator>
+
+<!--配置实体-->  
+
+<table tableName="gps_acl_users" domainObjectName="GpsAclUsers">
+ <columnOverride column="username">
+ <!-- 使用property属性来指定列要生成的属性名称 -->
+  <!-- <property name="mutual_contact" value="mutual_contact"/> -->
+ </columnOverride>
+</table>
+</context>
+</generatorConfiguration> 
